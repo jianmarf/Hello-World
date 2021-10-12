@@ -7,8 +7,8 @@ def envConnect(environment) {
       bastionName = 'sitebuilder-bastion'
       break
   }
-  echo $bastionName
-  echo $sshSocket
+  sh('echo $bastionName')
+  sh('echo $sshSocket')
 }
 
 pipeline {
