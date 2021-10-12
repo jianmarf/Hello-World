@@ -25,11 +25,13 @@ pipeline {
       input message: 'Proceed to SBDev' 
       envConnect('sbdev')
       echo $bastionName
+      echo $sshSocket
     }
     stage('DeploySiteBuilder') {
       input message: 'Process to SiteBuilder'
       envConnect('sitebuilder')
       echo $bastionName
+      echo $sshSocket
     }
   }
 }    
