@@ -27,14 +27,14 @@ pipeline {
       steps {
         input message: 'Proceed to SBDev' 
         envConnect('sbdev')
-        echo $sshSocket
+        sh "echo $sshSocket"
       }
     }
     stage('DeploySiteBuilder') {
       steps {
         input message: 'Process to SiteBuilder'
         envConnect('sitebuilder')
-        echo $sshSocket
+        sh "echo $sshSocket"
       }
     }
   }
