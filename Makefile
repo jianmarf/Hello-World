@@ -5,4 +5,4 @@ release: git-config
 
 git-config:
 	@git config --global user.email "jianmarf@gmail.com"
-	@git config --global user "jianmarf"
+	@git config --global user.name "jianmarf"
