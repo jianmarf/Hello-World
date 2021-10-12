@@ -13,14 +13,19 @@ def envConnect(environment) {
 
 pipeline {
   agent any
+  parameters {
+    string(name: 'VERSION', description: 'Version / tag to release')
+  }
   environment {
+    VERSION = "${VERSION}"
     sshSocket = 'kube.sock'
   }
 
   stages {
-    stage('Stage 1') {
+    stage('Checkout') {
       steps {
-        echo 'Hello world!'
+        checkout scm
+        sh 'make release'
       }
     }
     stage('DeplySBDEV') {
