@@ -7,6 +7,8 @@ def envConnect(environment) {
       bastionName = 'sitebuilder-bastion'
       break
   }
+  echo $bastionName
+  echo $sshSocket
 }
 
 pipeline {
@@ -25,7 +27,6 @@ pipeline {
       steps {
         input message: 'Proceed to SBDev' 
         envConnect('sbdev')
-        echo $bastionName
         echo $sshSocket
       }
     }
@@ -33,7 +34,6 @@ pipeline {
       steps {
         input message: 'Process to SiteBuilder'
         envConnect('sitebuilder')
-        echo $bastionName
         echo $sshSocket
       }
     }
