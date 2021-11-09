@@ -11,6 +11,16 @@ def envConnect(environment) {
   sh("echo $sshSocket")
 }
 
+def status = [build:[tag:(TAG)]]
+
+def checkoutTag(t) {
+  checkout([$class: 'GitSCM', branches: [[ name: "refs/tags/${t}" ]]])
+}
+
+def deploy(version) {
+  checkoutTag(version)
+}
+
 pipeline {
   agent any
   parameters {
@@ -25,6 +35,7 @@ pipeline {
     stage('Checkout') {
       steps {
         checkout scm
+        checkoutTag(TAG)
         sh 'make release'
       }
     }
